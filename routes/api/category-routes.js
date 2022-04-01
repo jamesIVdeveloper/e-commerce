@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ["id", "product_name", "price", "stock"],
+        attributes: ["id", "product_name", "price", "stock", "category_id"],
       },
     ],
   })
@@ -89,7 +89,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbCategoryData) => {
       if (!dbCategoryData) {
-        res.status(404).json({ message: "No user found with this id" });
+        res.status(404).json({ message: "No category found with this id" });
         return;
       }
       res.json(dbCategoryData);
